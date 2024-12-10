@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Order Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+          rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+          crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<section>
+<th:block th:insert="admin/header.html"></th:block>
+
+    <div class="container-fluid mt-5 p-1">
+        <div class="row">
+            <p class="text-center fs-3 mt-2">All Orders</p>
+            <hr>
+            <a href="/admin/" class="text-decoration-none">
+                <i class="fa-solid fa-arrow-left"></i> Back
+            </a>
+
+            <div class="col-md-4 p-4">
+                <form action="/search-order" method="get">
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" class="form-control" name="orderId"
+                                   placeholder="Enter order id">
+                        </div>
+                        <div class="col">
+                            <button class="btn btn-primary col">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-md-12 ps-4 pe-4">
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                    <tr>
+                        <th scope="col">Order Id</th>
+                        <th scope="col">Deliver Details</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Product Details</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="o : ${orders}">
+                        <td>[[${o.orderId}]]</td>
+                        <td>[[${o.address}]]</td>
+                        <td>[[${o.orderDate}]]</td>
+                        <td>[[${o.product.title}]]</td>
+                        <td>[[${o.price}]]</td>
+                        <td>[[${o.status}]]</td>
+                        <td>
+                            <form action="/update-order-status" method="post">
+                                <div class="row">
+                                    <div class="col">
+                                        <select class="form-control" name="st">
+                                            <option>--select--</option>
+                                            <option value="In Progress">In Progress</option>
+                                            <option value="Order Received">Order Received</option>
+                                            <option value="Product Packed">Product Packed</option>
+                                            <option value="Out for Delivery">Out for Delivery</option>
+                                            <option value="Delivered">Delivered</option>
+                                            <option value="Cancelled">Cancelled</option>
+                                        </select>
+                                    </div>
+                                    <input type="hidden" name="id" th:value="${o.id}">
+                                    <div class="col">
+                                        <button class="btn btn-sm btn-primary"
+                                                th:disabled="${o.status == 'Cancelled' || o.status == 'Delivered'}">
+                                            Update
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

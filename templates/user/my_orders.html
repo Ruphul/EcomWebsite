@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Orders</title>
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+        crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        // JavaScript function to confirm cancellation
+        function confirmCancel(event) {
+            if (!confirm("Are you sure you want to cancel this order?")) {
+                event.preventDefault(); // Prevent the action if the user clicks "Cancel"
+            }
+        }
+    </script>
+</head>
+<body>
+<section>
+    <th:block th:insert="header.html"></th:block>
+<div th:if="${Message}" class="alert alert-info" role="alert">
+    [[${Message}]]
+</div>
+    <div class="container mt-5 p-5">
+        <div class="row">
+            <p class="text-center fs-3">My Orders</p>
+
+            <div class="col-md-12">
+                <table class="table table-bordered card-sh">
+                    <thead>
+                        <tr>
+                            <th scope="col">Order Id</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Product Details</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="o : ${orders}">
+                            <th scope="row">[[${o.orderId}]]</th>
+                            <td>[[${o.orderDate}]]</td>
+                            <td>[[${o.product.title}]]</td>
+                            <td>
+                                Quantity : [[${o.quantity}]] <br>
+                                Price : [[${o.price}]] <br>
+                                Total Price : [[${o.quantity * o.price}]]
+                            </td>
+                            <td>[[${o.status}]]</td>
+                            <td>
+    <th:block th:if="${o.status == 'In Progress'}">
+        <a th:href="@{/user/update-status(id=${o.id})}"
+           class="btn btn-sm btn-danger"
+           onclick="confirmCancel(event)">Cancel</a>
+    </th:block>
+    <th:block th:unless="${o.status == 'In Progress'}">
+        <a href="#" class="btn btn-sm btn-danger disabled">Cancel</a>
+    </th:block>
+</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

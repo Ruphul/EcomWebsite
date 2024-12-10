@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+	crossorigin="anonymous">
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+	integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+
+<section>
+<th:block th:insert="admin/header.html"></th:block>
+
+		<div class="container p-5 mt-3">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="card card-sh">
+						
+						<div class="card-body">
+							<form action="/saveProduct" method="post"
+								enctype="multipart/form-data">
+								<div class="mb-3">
+									<label>Enter Title</label> <input type="text" name="title"
+										class="form-control">
+								</div>
+
+								<div class="mb-3">
+									<label>Enter Description</label>
+									<textarea rows="3" cols="" class="form-control"
+										name="description"></textarea>
+								</div>
+
+								<div class="mb-3">
+									<label>Category</label> <select class="form-control"
+										name="category">
+										<option>--select--</option>
+										<option th:each="c:${categories}"
+										 th:value="${c.id}"
+                                         th:text="${c.name}"
+										>
+										</option>
+									</select>
+								</div>
+								
+								
+								   
+								
+
+								<div class="mb-3">
+									<label>Enter Price</label> <input type="number" name="price"
+										class="form-control">
+								</div>
+								
+																
+								
+								
+								
+								<div class="mb-3">
+									<label>Status</label>
+
+									<div class="form-check">
+										<input class="form-check-input" type="radio" checked
+											value="true" name="isActive" id="flexRadioDefault1">
+										<label class="form-check-label" for="flexRadioDefault1">
+											Active </label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="radio" name="isActive"
+											value="false" id="flexRadioDefault2"> <label
+											class="form-check-label" for="flexRadioDefault2">
+											Inactive </label>
+									</div>
+
+								</div>
+								<div class="row">
+
+									<div class="mb-3 col">
+										<label>Enter Stock</label> <input type="text" name="stock"
+											class="form-control">
+									</div>
+
+
+
+								<div class="mb-3 col">
+                <label>upload Image</label>
+                <div class="custom-file">
+                    <input type="file"  name="productImage" accept="image/jpeg, image/png"  id="productImage"  class="form-control" />
+                 
+                </div>
+                <div>
+                    <img id="imgPreview" height="100px" width="100px" th:src="@{${'/img/productImages/' +products.image}}" style="margin-top: 20px" alt=" ">
+                </div>
+               <input type="hidden" name="imgName" th:value="${products.image}">
+            </div>
+						
+									
+								
+                                  
+			 					</div>
+								<button class="btn btn-primary col-md-12">Submit</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</body>
+</html>
