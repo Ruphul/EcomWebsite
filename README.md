@@ -1,2 +1,15 @@
 # EcomWebsite
   The project is a web-based e-commerce platform developed with Java as the backend technology. It enables users to browse, search, and purchase products across various categories. Key backend functionalities include product management, user authentication, and shopping cart operations.
+![Screenshot 2024-12-19 215235](https://github.com/user-attachments/assets/a210f2cb-c8ae-4017-9034-d130901cd660)
+![Screenshot 2024-12-19 215022](https://github.com/user-attachments/assets/9749f9a1-c38a-4bfc-b1ee-0209676cd040)
+![Screenshot 2024-12-19 215003](https://github.com/user-attachments/assets/83fe1a8d-dc35-4359-90fa-947579a0d8e0)
+![Screenshot 2024-12-19 214939](https://github.com/user-attachments/assets/bc3e1f43-63be-4192-96bd-185b68c7a2c5)
+![Screenshot 2024-12-19 214921](https://github.com/user-attachments/assets/07f2e6c4-a702-4a29-b1b0-e69126a7413d)
+![Screenshot 2024-12-19 214855](https://github.com/user-attachments/assets/b2c6ed04-36e4-402c-bce4-e33d82b95681)
+![Screenshot 2024-12-19 214820](https://github.com/user-attachments/assets/563af3d0-a6be-4360-ad54-6f513a387ba9)
+![Screenshot 2024-12-19 215235](https://github.com/user-attachments/assets/1276640d-acfb-43f6-b26f-bee1a2a7dfd5)
+![Screenshot 2024-12-19 215215](https://github.com/user-attachments/assets/63fd9065-361a-4785-9d6a-2410e76517ca)
+![Screenshot 2024-12-19 215155](https://github.com/user-attachments/assets/23db0873-7b1e-4d07-b85a-e7693d37d00a)
+![Screenshot 2024-12-19 215138](https://github.com/user-attachments/assets/175d19ac-f812-47c8-9bb5-10491d8e32dc)
+![Screenshot 2024-12-19 215121](https://github.com/user-attachments/assets/73f49d83-fc91-49bf-aa52-d0957166c4d1)
+![Screenshot 2024-12-19 215037](https://github.com/user-attachments/assets/66998248-09c5-4fe0-b74e-90a0081224b9)
